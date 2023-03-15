@@ -2,14 +2,9 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import {User} from "./typeorm/user";
+import {User} from "./typeorm";
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
-import { Fournisseur, Station,Produit, License,Vignette, Ville,Historique } from './typeorm';
-import { FournisseurModule } from './fournisseur/fournisseur.module';
-import { VignetteModule } from './vignette/vignette.module';
-import { FactureModule } from './facture/facture.module';
-import { UtilisateurModule } from './utilisateur/utilisateur.module';
 
 @Module({
   imports: [
@@ -19,17 +14,13 @@ import { UtilisateurModule } from './utilisateur/utilisateur.module';
       port: 3306,
       username: 'root',
       password: '',
-      database: 'api',
-      entities:[Station,User,Fournisseur,Produit,License,Vignette,Ville,Historique],
+      database: 'crf_db',
+      entities:[User],
       synchronize: true,
       migrationsRun:false
     }),
     UsersModule,
     AuthModule,
-    FournisseurModule,
-    VignetteModule,
-    FactureModule,
-    UtilisateurModule
   ],
   controllers: [AppController],
   providers: [AppService],

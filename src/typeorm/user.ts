@@ -1,5 +1,4 @@
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Fournisseur } from "./fournisseur";
 @Entity({ name: 'user' , schema: 'public'})
 export class User {
     @PrimaryGeneratedColumn({
